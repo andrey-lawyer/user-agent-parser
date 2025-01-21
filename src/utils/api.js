@@ -1,19 +1,24 @@
 import axios from "axios";
 
-const path = "https://useragent-parser.onrender.com/api/user-agent/parse"
+const path = "https://useragent-parser.onrender.com/api"
 
-export const  getDataFromUserAgent = async (useragent) => {
-    const { data } = await axios.post(path,useragent, {
-        headers: {
-            "Content-Type": "text/plain",
-            Accept: "application/json",
+export const getDataFromUserAgent = async (useragent) => {
+    const { data } = await axios.get(`${path}/user-agent/parse-query`, {
+        params: {
+            userAgent: useragent,
         },
+
     });
     return data;
 }
 
 export const  getDataFromBrowser = async () => {
-    const { data } = await axios.get(path);
+    const { data } = await axios.get(`${path}/user-agent/parse-header`,);
+    return data;
+}
+
+export const  healthCheck = async () => {
+    const { data } = await axios.get(`${path}/health`,);
     return data;
 }
 

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {getDataFromBrowser} from "../utils/api";
+import {getDataFromBrowser, healthCheck} from "../utils/api";
 
 export const useGetdata = () => {
 
@@ -27,7 +27,7 @@ export const useGetdata = () => {
         fetchData();
 
         setTimeout(() => {
-            getDataFromBrowser().then()
+            healthCheck().then()
         }, 30000);
     }, []);
     return {loading,  userAgentData, setUserAgentData,setLoading, initialLoad, isUserAgentCurrent, setIsUserAgentCurrent }

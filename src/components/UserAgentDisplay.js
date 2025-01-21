@@ -18,24 +18,23 @@ const renderTreeData = (data) => {
                 </>
             ),
             key,
-            children: isObject ? renderTreeData(value) : [],
+            children: isObject ? renderTreeData(value) : null,
+            expandable: false,
         };
     });
 };
 
-const UserAgentDisplay = ({ data}) => {
-
+const UserAgentDisplay = ({ data }) => {
     return (
         <div style={{ marginTop: '20px' }}>
             <Card bordered={false} style={{ width: '100%' }}>
-
                 <Divider />
-
                 <Tree
                     treeData={renderTreeData(data)}
                     showLine
                     defaultExpandAll
                     blockNode
+                    disabled={true}
                 />
             </Card>
         </div>
@@ -43,3 +42,4 @@ const UserAgentDisplay = ({ data}) => {
 };
 
 export default UserAgentDisplay;
+
